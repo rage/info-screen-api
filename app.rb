@@ -21,7 +21,7 @@ end
 get '/messages/?' do
 
   content_type :json
-  Message.all.to_json(only: [ :id, :timestamp, :message ])
+  Message.all(order: :timestamp.desc).to_json(only: [ :id, :timestamp, :message ])
 
 end
 
