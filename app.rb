@@ -8,7 +8,7 @@ require 'json'
 require 'data_mapper'
 
 require './configuration.rb'
-require './message.rb'
+require './notification.rb'
 
 configure do
 
@@ -18,16 +18,16 @@ configure do
 
 end
 
-get '/messages/?' do
+get '/notifications/?' do
 
   content_type :json
-  Message.all(order: :timestamp.desc).to_json(only: [ :id, :timestamp, :message ])
+  Notification.all(order: :timestamp.desc).to_json(only: [ :id, :timestamp, :message ])
 
 end
 
-post '/messages/?' do
+post '/notifications/?' do
 
-  Message.create(
+  Notification.create(
 
     message: params[:message],
     timestamp: DateTime.now,

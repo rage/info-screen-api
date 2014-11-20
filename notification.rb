@@ -1,4 +1,4 @@
-class Message
+class Notification
 
   include DataMapper::Resource
 
